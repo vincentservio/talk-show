@@ -1,0 +1,6 @@
+<ul><% TvShow.all.each do |t| %>
+
+<li> <%= link_to(t.title, "/tv_shows/#{t.id}") %> </li>
+<%end %> 
+
+<ul>

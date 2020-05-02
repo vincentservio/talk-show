@@ -1,0 +1,9 @@
+users 
+has many tv shows 
+
+comments 
+belongs to users 
+belongs to tvshows 
+
+tvshows 
+has many comments 
