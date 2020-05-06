@@ -3,14 +3,14 @@
 
 
 
-<div> <%= link_to("add comment ", "/tv_shows/#{@tvshow.id}/comments/new")  %> </div>
 
 
 
-<%= form_with url:tv_show_comments_path ,id: :new_tv_show_comment do |form| %>
-  <div>  <%= form.label :comment %>
-    <%= form.text_field :comment %></div>
-    <%= form.submit %>
+<%= form_with model:[@tvshow, @comment], local: :true  do |f| %>
+
+  <%= f.label :comment %>
+    <%= f.text_field :comment %>
+    <%= f.submit %>
 <% end %>
 
 

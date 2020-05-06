@@ -5,8 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-TvShow.create(title: "Lego Master", network: "fox", rate: "G", time: "tuesday") 
-TvShow.create(title: "Masked Singer", network: "fox", rate: "G", time: "thursday") 
-TvShow.create(title: "Power", network: "starz", rate: "TVMA", time: "monday") 
-TvShow.create(title: "Flea Market Flip", network: "HGTV", rate: "G", time: "tuesday") 
-TvShow.create(title: "Money heist", network: "Netflix", rate: "TVMA", time: "Seasons") 
+Comment.create(comment: 'Germany', user_id: 4, tv_show_id: 1)
+Comment.create(comment: 'japan', user_id: 3, tv_show_id: 2)
+Comment.create(comment: 'swiss', user_id: 1, tv_show_id: 3)

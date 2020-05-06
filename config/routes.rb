@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 resources :application
 
 
+
   resources :tv_shows do 
-     resources :comments, only: [:new, :create]
+     resources :comments, only:[:new, :create]
   end
+
+    resources :comments
  
-  resources :ingredients
+  get '/tv_shows/:tv_show_id/comments', to:"comments#index" 
   root to: 'tv_shows#index'
 
   # devise_for :users
