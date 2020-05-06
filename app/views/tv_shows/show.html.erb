@@ -1,1 +1,15 @@
-<%= @tvshow.title %>
+<h2><%= @tvshow.title %> </h2>
+
+
+
+
+<div> <%= link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new")  %> </div>
+
+
+<%=@tvshow.id%>
+<dir> </dir>
+Comments:
+  <% @tvshow.comments.each do |comment| %>
+    <%= link_to comment.user.username, user_path(comment.user) %> said
+    <%= comment.content %>
+  <% end %>
