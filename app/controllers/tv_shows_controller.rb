@@ -4,11 +4,15 @@ class TvShowsController < ApplicationController
     def index 
         
       @tvshows =  TvShow.all
+    
+
+
     end 
  
     def show
+        
          @tvshow = TvShow.find_by(id:params[:id])
-            
+            @user = current_user 
             if @tvshow 
                 render  "show"
             else 
@@ -17,7 +21,9 @@ class TvShowsController < ApplicationController
     end
 
     def new 
+        
        @tvshow = TvShow.new
+        @comment = Comment.new
     end 
 
     def create

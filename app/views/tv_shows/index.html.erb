@@ -1,5 +1,5 @@
 <center> 
-<h2>WELCOME <%= current_user ? current_user.username.titleize : nil %>!</h2>
+<h2>WELCOME <%= current_user ? current_user.username.title : nil %>!</h2>
 
 <ul><% TvShow.all.each do |t| %>
 

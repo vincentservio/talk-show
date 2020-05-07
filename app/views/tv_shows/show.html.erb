@@ -3,16 +3,19 @@
 
 
 
-<div> <%= link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new")  %> </div>
+<h2><%= current_user ? link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new") : nil %></h2>
+
+<%# <dir> <%= link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new")  %> </dir> %>
+    
+<%= @tvshow.comments.count %> Comments:
+ <% @tvshow.comments.each do |comment| %>
 
 
-<%=@tvshow.id%>
-<dir> </dir>
-Comments:
-  <% @tvshow.comments.each do |comment| %>
 
-
-
-   <li> <%= link_to comment.user.username%> said
+   <li> <%= link_to comment.user.username.titleize , "/comments/#{comment.id}" %> :
      <%= comment.comment %>
-   <% end %> </li>
+
+<div> 
+
+ 
+   <% end %> </div>

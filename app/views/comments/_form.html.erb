@@ -1,5 +1,6 @@
-<%= form_with url:tv_show_comments_path ,id: :new_tv_show_comment do |form| %>
-  <div>  <%= form.label :comment %>
-    <%= form.text_field :comment %></div>
-    <%= form.submit %>
-<% end %>
+ <% @tvshow.comments.each do |comment| %>
+
+
+
+   <li> <%= link_to comment.user.username %> said
+   \    
