@@ -4,11 +4,18 @@ class TvShowsController < ApplicationController
     def index 
         
       @tvshows =  TvShow.all
-    
+     end 
 
-
-    end 
+     def recent
+@tvshows = TvShow.recent
+     end 
  
+     def most_comments
+
+        @tvshows = TvShow.most_comments
+     end
+
+
     def show
         
          @tvshow = TvShow.find_by(id:params[:id])
@@ -40,6 +47,37 @@ class TvShowsController < ApplicationController
         else 
             render :new
          end
+    end
+
+    def edit
+        @tvshow = TvShow.find_by(id:params[:id])
+        if @tvshow
+            render "edit"
+        else
+            redirect_to tv_shows_path
+        end
+    end
+
+
+    def update
+        @tvshow = TvShow.find_by(id:params[:id])
+        if @tvshow
+            # update the sushi and then render show page
+            @tvshow.update(tvshow_params)
+            if @tvshow.errors.any?
+                render "edit"
+            else
+                redirect_to @tv_show
+            end
+        else
+            render "edit"
+        end
+    end
+
+    def destroy
+        @tvshow = Sushi.find_by(id:params[:id])
+        @tvshow.destroy
+        redirect_to tv_shows_path
     end
 
     private 

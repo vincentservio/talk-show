@@ -1,76 +1,51 @@
 class CommentsController < ApplicationController
-    def new 
-           if params[:tv_show_id]
-        @comment = Comment.new
 
     def index 
-        
-        @tvshow = TvShow.find_by_id(params[:tv_show_id])
+       if params[:tv_show_id]  && params[:user_id]
+        set_tvshow
         @comments = @tvshow.comments
-       else 
-        @comments = Comment.all
+        else 
+            @comments = Comment.all
+        end 
+    end
+
+    def show 
+        set_comment
     end 
-end
 
     def new 
-        
-           if params[:tv_show_id]
-          
-                set_tvshow
+        if params[:tv_show_id]
+           set_tvshow
+        @comment = @tvshow.comments.build
         else 
             @comment = Comment.new 
         end 
     end
 
-
-
-
     def create 
-             if params[:tv_show_id]
-          
-                set_tvshow
-                
+        if params[:tv_show_id]
+           set_tvshow
         @comment = @tvshow.comments.build(comment_params)
-                  
         else 
-            @comment = Comment.new(comment_params)
+            set_comment
         end 
-        
-        @comment.user_id = current_user.id
+            @comment.user_id = current_user.id
+        if @comment
+            @comment.save 
+            redirect_to @tvshow
+        else
+            render :new , alert: "Error creating Ingredient!"
+        end 
+    end
 
-            if @comment
-                @comment.save 
-                redirect_to @tvshow
-            else
-             
-        
-                render :new , alert: "Error creating Ingredient!"
-            end 
-
+    def edit
+        @sushi = Sushi.find_by(id:params[:id])
+        if @sushi
+            render "edit"
+        else
+            redirect_to sushis_path
         end
-
-
-
-
-        # if params[:tv_show_id]
-
-        #     @tvshow = TvShow.find_by_id(params[:tv_show_id])
-
-        #     @comment = @tvshow.comments.build(comment_params)
-          
-        # else 
-        #     @comment = Comment.new(comment_params)
-        # end 
-        # if @comment.save 
-        #     redirect_to @comment
-        # else 
-        #     render :new, alert: "Error creating Ingredient!"
-        # end
-
-
-
-
-
+    end
 
 
     def destory 
@@ -80,6 +55,9 @@ end
     private 
     def set_tvshow
         @tvshow = TvShow.find_by(id: params[:tv_show_id])
+    end
+    def set_comment
+        @comment = Comment.find_by(id: params[:id])
     end
      def comment_params
         params.require(:comment).permit(:comment, :user_id)

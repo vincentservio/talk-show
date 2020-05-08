@@ -1,14 +1,16 @@
 <center> 
-<h2>WELCOME <%= current_user ? current_user.username.title : nil %>!</h2>
 
-<ul><% TvShow.all.each do |t| %>
+    <%= render 'sort' %>
 
-<div> <%= link_to(t.title, "/tv_shows/#{t.id}") %> </div>
-<%end %> 
+        <ul><% TvShow.all.each do |t| %>
+     <div> <%= link_to(t.title, "/tv_shows/#{t.id}") %> </div>
+                    <%end %> 
 
 <div> ________</div>
 <%= link_to "ADD NEW TVSHOW", new_tv_show_path(@tvshow), class: "button" %>
-<div> -</div>
+<div> - </div>
 <ul>
 
 </center>
+
+

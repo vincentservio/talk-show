@@ -12,10 +12,11 @@
 
 
 
-   <li> <%= link_to comment.user.username.titleize , "/comments/#{comment.id}" %> :
+   <li> <%= link_to comment.user.username , "/comments/#{comment.id}" %> :
      <%= comment.comment %>
 
 <div> 
 
  
-   <% end %> </div>
+   <% end %> </div>  
+    <li> <%= link_to("edit", "/tv_shows/#{@tvshow.id}/edit") %> :
