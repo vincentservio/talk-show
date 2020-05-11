@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
 
     def show 
         set_comment
-    end 
-
+end
     def new 
         if params[:tv_show_id]
            set_tvshow
@@ -39,6 +38,8 @@ class CommentsController < ApplicationController
         end 
     end
 
+
+
     def edit
         set_comment
     end
@@ -49,7 +50,11 @@ class CommentsController < ApplicationController
   redirect_to comment_path(@comment)
 end
 
-    def destory 
+    def destroy 
+        
+        set_comment
+        @comment.destroy
+        redirect_to tv_show_path
     end
 
 
@@ -57,9 +62,11 @@ end
     def set_tvshow
         @tvshow = TvShow.find_by(id: params[:tv_show_id])
     end
+
     def set_comment
         @comment = Comment.find_by(id: params[:id])
     end
+
      def comment_params
         params.require(:comment).permit(:comment, :user_id)
     end

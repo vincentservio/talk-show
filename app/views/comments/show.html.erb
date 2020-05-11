@@ -3,4 +3,8 @@ said
 
 <%= @comment.comment %>
 
-<%= link_to 'edit', edit_comment_path(@comment) %>
+<% if @comment.user == current_user%>
+<%= link_to 'edit', edit_comment_path(@comment) %> |
+<%= link_to 'delete', @tvshow, :confirm => "Are you sure?", :method => :Delete%>
+
+<% end %>

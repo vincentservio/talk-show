@@ -1,4 +1,5 @@
-<h2><%= @tvshow.title %> </h2>
+<h1><%= @tvshow.title %> </h1>
+  <%= link_to("edit show details", "/tv_shows/#{@tvshow.id}/edit") %> 
 
 
 
@@ -14,9 +15,14 @@
 
    <li> <%= link_to comment.user.username , "/comments/#{comment.id}" %> :
      <%= comment.comment %>
+     <p style = "text-align:right"> 
 
+ </div>
+ 
 <div> 
 
  
-   <% end %> </div>  
-    <li> <%= link_to("edit", "/tv_shows/#{@tvshow.id}/edit") %> :
+
+
+
+ <% end %> </div>  
