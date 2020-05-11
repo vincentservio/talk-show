@@ -31,22 +31,23 @@ class CommentsController < ApplicationController
         end 
             @comment.user_id = current_user.id
         if @comment
+       
             @comment.save 
             redirect_to @tvshow
         else
-            render :new , alert: "Error creating Ingredient!"
+            render :new 
         end 
     end
 
     def edit
-        @sushi = Sushi.find_by(id:params[:id])
-        if @sushi
-            render "edit"
-        else
-            redirect_to sushis_path
-        end
+        set_comment
     end
 
+    def update
+  @comment = Comment.find(params[:id])
+  @comment.update(comment: params[:comment][:comment])
+  redirect_to comment_path(@comment)
+end
 
     def destory 
     end
