@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, 
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
          has_many :tv_shows
-         has_many :comments
+         has_many :comments, dependent: :delete_all
          has_many :tv_shows, through: :comments
 
 

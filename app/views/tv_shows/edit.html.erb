@@ -1,5 +1,16 @@
-<%= form_with url:tv_shows_path ,id: :edit_tv_show do |form| %>
-  <div>  <%= form.label :title %>
+<%= form_for @tvshow do |form| %>
+   <div>  <%= form.label :title %>
+    <%= form.text_field :title %></div>
 
+    <div><%= form.label :network %>
+    <%= form.text_field :network %></div>
+    
+   <div><%= form.label :rate %>
+    <%= form.text_field :rate %></div>
+
+   <div><%= form.label :time %>
+    <%= form.text_field :time %></div>
+
+  <%= form.submit %>
 <% end %>
 

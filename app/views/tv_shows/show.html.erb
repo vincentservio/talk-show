@@ -1,6 +1,14 @@
+<% if !flash[:notice].blank? %>
+<div class ="notice">
+    <%= flash[:notice] %>
+    </div>
+    <%end %>
+
+
+
 <h1><%= @tvshow.title %> </h1>
   <%= link_to("edit show details", "/tv_shows/#{@tvshow.id}/edit") %> 
-
+<%= button_to 'delete', tv_show_path(@tvshow), method: :delete  %>
 
 
 
