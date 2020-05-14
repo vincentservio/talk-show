@@ -7,8 +7,8 @@
 
 
 <h1><%= @tvshow.title %> </h1>
-  <%= link_to("edit show details", "/tv_shows/#{@tvshow.id}/edit") %> 
-<%= button_to 'delete', tv_show_path(@tvshow), method: :delete  %>
+  <%= link_to("Edit Show Details", "/tv_shows/#{@tvshow.id}/edit") %> |
+<%= link_to 'Delete Show', tv_show_path(@tvshow), method: :delete  %>
 
 
 
@@ -21,7 +21,7 @@
 
 
 
-   <li> <%= link_to comment.user.username , "/comments/#{comment.id}" %> :
+   <li> <%= link_to comment.user.username.titleize , "/comments/#{comment.id}" %> :
      <%= comment.comment %>
      <p style = "text-align:right"> 
 

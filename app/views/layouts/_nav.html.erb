@@ -1,4 +1,4 @@
-<center>
+
 <nav>
     <ul>
     <% if !user_signed_in?  %>
@@ -8,7 +8,8 @@
         <% else %>
         <%= button_to "log Out", destroy_user_session_path, method: :delete %>
         <%= button_to "Edit", edit_user_registration_path, method: :get%>
+          <center>      <%= link_to "Home", tv_shows_path	, method: :get %></center>
+
         <% end %>
     </ul>
 </nav>
-</center>

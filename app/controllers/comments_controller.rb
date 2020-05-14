@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     def show 
         set_comment
     end
+    
     def new 
         if params[:tv_show_id]
            set_tvshow
@@ -46,8 +47,6 @@ class CommentsController < ApplicationController
     def edit
         set_comment
          flash[:notice] = "Comment Edit  "
-
-
     end
 
     def update

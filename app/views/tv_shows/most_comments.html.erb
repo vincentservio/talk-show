@@ -1,5 +1,4 @@
 <center> 
-<%# <h2>WELCOME to the MOST COMmeNTS <%= current_user ? current_user.username.title : nil %>!</h2> %>
 <%= render 'sort' %>
 
 <ul><% TvShow.most_comments.each do |t| %>

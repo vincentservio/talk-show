@@ -72,6 +72,6 @@ class TvShowsController < ApplicationController
     private 
 
     def tvshow_params 
-        params.require(:tv_show).permit(:title, :network, :rate, :time )
+        params.require(:tv_show).permit(:title, :network, :rate )
     end 
 end

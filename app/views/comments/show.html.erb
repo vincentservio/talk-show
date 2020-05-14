@@ -1,3 +1,4 @@
+<ul>
 <% if !flash[:notice].blank? %>
 <div class ="notice">
     <%= flash[:notice] %>
@@ -15,3 +16,4 @@ said
 <%= link_to 'delete', @tvshow, :confirm => "Are you sure?", :method => :Delete%>
 
 <% end %>
+</ul>
