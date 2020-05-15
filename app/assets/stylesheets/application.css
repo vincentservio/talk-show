@@ -51,8 +51,7 @@ a {
   color: rgb(158, 158, 158);
   border: ,5px solid black;
   outline: #4CAF50 solid .5px;
-  margin: .5px\]\;  
-  padding: .5px;
+
     background-color: #4CAF50;
   color: white;
   font-size: 24px
@@ -63,6 +62,7 @@ a {
 }
 a:hover {
     color: hotpink;
+     /* font-size: 32px */
   
 }
 p.dotted {

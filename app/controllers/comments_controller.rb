@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     def show 
         set_comment
     end
-    
+
     def new 
         if params[:tv_show_id]
            set_tvshow
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
            @comment = @tvshow.comments.build(comment_params)
         else 
             set_comment
-        end 
+        end  
              @comment.user_id = current_user.id
              if @comment.valid?
                 @comment.save 

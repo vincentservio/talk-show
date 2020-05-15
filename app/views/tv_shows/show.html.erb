@@ -1,33 +1,28 @@
-<% if !flash[:notice].blank? %>
-<div class ="notice">
-    <%= flash[:notice] %>
-    </div>
-    <%end %>
+  <% if !flash[:notice].blank? %>
+     <div class ="notice">
+        <%= flash[:notice] %>
+           </div>
+  <%end %>
+
+       <h1><%= @tvshow.title %> </h1>
+      <%= link_to("Edit Show Details", "/tv_shows/#{@tvshow.id}/edit") %> |
+      <%= link_to 'Delete Show', tv_show_path(@tvshow), method: :delete  %>
+         <h2><%= current_user ? link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new") : nil %></h2>
+             <%= @tvshow.comments.count %> Comments:
+             <% @tvshow.comments.each do |comment| %> 
+           
+                <li> <%= link_to comment.user.username , "/comments/#{comment.id}" %> :
+                     <%= comment.comment %>
+                        <p style = "text-align:right"> 
+
+                          </div>
+                          
+                          <div> 
+
+  
 
 
 
-<h1><%= @tvshow.title %> </h1>
-  <%= link_to("Edit Show Details", "/tv_shows/#{@tvshow.id}/edit") %> |
-<%= link_to 'Delete Show', tv_show_path(@tvshow), method: :delete  %>
-
-
-
-<h2><%= current_user ? link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new") : nil %></h2>
-
-<%# <dir> <%= link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new")  %> </dir> %>
-    
-<%= @tvshow.comments.count %> Comments:
- <% @tvshow.comments.each do |comment| %>
-
-
-
-   <li> <%= link_to comment.user.username.titleize , "/comments/#{comment.id}" %> :
-     <%= comment.comment %>
-     <p style = "text-align:right"> 
-
- </div>
- 
-<div> 
 
  
 
