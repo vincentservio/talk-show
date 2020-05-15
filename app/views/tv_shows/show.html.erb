@@ -8,7 +8,7 @@
       <%= link_to("Edit Show Details", "/tv_shows/#{@tvshow.id}/edit") %> |
       <%= link_to 'Delete Show', tv_show_path(@tvshow), method: :delete  %>
          <h2><%= current_user ? link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new") : nil %></h2>
-             <%= @tvshow.comments.count %> Comments:
+           <p>  <%= @tvshow.comments.count %> Comments:</p>
              <% @tvshow.comments.each do |comment| %> 
            
                 <li> <%= link_to comment.user.username , "/comments/#{comment.id}" %> :

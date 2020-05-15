@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'registrations' },
-                      controllers: { omniauth_callbacks: "omniauth_callbacks"}
-
-resources :users
-
-
-
-  resources :tv_shows do 
+  devise_for :users, :controllers => { registrations: 'registrations',  omniauth_callbacks: "omniauth_callbacks" }
+                  
+   resources :tv_shows do 
      resources :comments, only:[:index, :new, :create, :show, :edit, :update, :destroy]
 
 end

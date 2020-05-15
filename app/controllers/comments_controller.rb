@@ -60,8 +60,9 @@ class CommentsController < ApplicationController
     def destroy 
         set_comment
         @comment.destroy
-        flash[:notice] = "Comment Succsessfully Deleted "
         redirect_to tv_show_path
+        flash[:notice] = "Comment Succsessfully Deleted "
+
     end
 
 
