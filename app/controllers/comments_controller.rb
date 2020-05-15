@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
        if params[:tv_show_id]  && params[:user_id]
         set_tvshow
         @comments = @tvshow.comments
+
         else 
             @comments = Comment.all
         end 

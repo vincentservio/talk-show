@@ -14,8 +14,8 @@
  *= require_self
  */
 body {
-  background-color: rgb(255, 255, 255);
-  
+  background-color: rgb(0, 0, 0);
+   font-size: 28px
 }
 
 h1 {
@@ -35,7 +35,7 @@ p {
 }
 
 .button {
-  background-color: rgb(114, 247, 26); /* Green */
+  background-color: rgb(105, 105, 105); /* Green */
   border: none;
   color: rgb(0, 0, 0);
   padding: 15px 32px;
@@ -48,11 +48,11 @@ p {
 a {
   color: rgb(250, 0, 125);
   text-decoration: none;
-  color: rgb(158, 158, 158);
-  border: ,5px solid black;
-  outline: #4CAF50 solid .5px;
-
-    background-color: #4CAF50;
+  /* color: rgb(158, 158, 158); */
+  /* border: ,5px solid black; */
+  /* outline: #4CAF50 solid .5px; */
+/* 
+    background-color: #4CAF50; */
   color: white;
   font-size: 24px
   
@@ -62,7 +62,7 @@ a {
 }
 a:hover {
     color: hotpink;
-     /* font-size: 32px */
+     font-size: 32px;
   
 }
 p.dotted {
@@ -84,5 +84,28 @@ ul{
   color: hotpink;
     /* text-align: center; */
 font-size: 32px
+
+}
+
+label{
+   color: hotpink;
+
+font-size: 24px;
+text-align: center;
+
+}
+input{
+   color: hotpink;
+  background-color: rgb(0, 0, 0); /* Green */
+
+font-size: 24px;
+text-align: center;
+
+}
+center{
+   color: hotpink;
+
+font-size: 24px;
+text-align: center;
 
 }

@@ -1,23 +1,19 @@
 <% if !flash[:notice].blank? %>
-<div class ="notice">
-    <%= flash[:notice] %>
-    </div>
-    <%end %>
+    <div class ="notice">
+         <%= flash[:notice] %>
+         </div>
+<%end %>
 
 
 <center> 
-
-    <%= render 'sort' %>
-
-        <ul><% TvShow.all.each do |t| %>
-     <div> <%= link_to(t.title, "/tv_shows/#{t.id}") %> </div>
-                    <%end %> 
-
-<div> ________</div>
-<%= link_to "ADD NEW TVSHOW", new_tv_show_path(@tvshow), class: "button" %>
-<div> - </div>
-<ul>
-
+ <%= render 'sort' %>
+         <ul><% TvShow.all.each do |t| %>
+             <div> <%= link_to(t.title, "/tv_shows/#{t.id}") %> </div>
+                  <%end %> 
+                    <div> ________</div>
+                    <%= link_to "ADD NEW TVSHOW", new_tv_show_path(@tvshow), class: "button" %>
+                        <div> - </div>
+                            <ul>
 </center>
 
 
