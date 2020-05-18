@@ -1,19 +1,10 @@
 <ul>
-<% if !flash[:notice].blank? %>
-<div class ="notice">
-    <%= flash[:notice] %>
-    </div>
-    <%end %>
-
-
-<%= @comment.user.username %>
-said 
-
-<%= @comment.comment %>
-
-<% if @comment.user == current_user%>
-<%= link_to 'edit', edit_comment_path(@comment) %> |
-<%= link_to 'delete', @tvshow, :confirm => "Are you sure?", :method => :Delete%>
-
-<% end %>
+   <%= render 'layouts/alert' %>
+        <%= @comment.user.username.titleize %>
+            said <%= @comment.comment %>
+                    <c>  <%= time_ago_in_words (@comment.created_at) %> ago</c>
+                                <% if @comment.user == current_user%>
+                                    <%= link_to 'edit', edit_comment_path(@comment) %> |
+                                    <%= link_to 'delete', @tvshow, :confirm => "Are you sure?", :method => :Delete%>
+                                <% end %>
 </ul>

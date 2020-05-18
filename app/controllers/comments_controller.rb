@@ -1,14 +1,6 @@
 class CommentsController < ApplicationController
 
-    def index 
-       if params[:tv_show_id]  && params[:user_id]
-        set_tvshow
-        @comments = @tvshow.comments
-
-        else 
-            @comments = Comment.all
-        end 
-    end
+ 
 
     def show 
         set_comment
@@ -17,8 +9,7 @@ class CommentsController < ApplicationController
     def new 
         if params[:tv_show_id]
            set_tvshow
-        @comment = @tvshow.comments.build
-
+           @comment = @tvshow.comments.build
         else 
             @comment = Comment.new 
         end 
@@ -31,11 +22,11 @@ class CommentsController < ApplicationController
         else 
             set_comment
         end  
-             @comment.user_id = current_user.id
+             proper_user
              if @comment.valid?
                 @comment.save 
                 flash[:notice] = "New comment Succsessfully Created "
-            redirect_to @tvshow
+                redirect_to @tvshow
             else
                     flash[:notice] = "Comment Cannot Be Created Review Entry "
 
@@ -46,8 +37,11 @@ class CommentsController < ApplicationController
 
 
     def edit
-        set_comment
-         flash[:notice] = "Comment Edit  "
+            set_comment
+        if proper_user
+        else flash[:notice] = "Must be #{@comment.user.username} to edit"
+             redirect_to @comment 
+        end
     end
 
     def update
@@ -62,10 +56,23 @@ class CommentsController < ApplicationController
         @comment.destroy
         redirect_to tv_show_path
         flash[:notice] = "Comment Succsessfully Deleted "
-
     end
 
 
- 
+   private 
+   
+    def set_tvshow
+        @tvshow = TvShow.find_by(id: params[:tv_show_id])
+    end
 
- end 
+    def set_comment
+        @comment = Comment.find_by(id: params[:id])
+    end
+
+    def comment_params
+        params.require(:comment).permit(:comment, :user_id)
+    end
+     def proper_user
+   @comment.user == current_user
+   end
+end 

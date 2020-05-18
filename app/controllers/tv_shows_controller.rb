@@ -5,7 +5,7 @@ class TvShowsController < ApplicationController
     end 
 
     def show
-        @tvshow = TvShow.find_by(id: params[:id])
+        set_tvshow
         @user = current_user 
             if @tvshow 
                 render  "show"
@@ -20,11 +20,7 @@ class TvShowsController < ApplicationController
     end 
 
     def create
-        @tvshow = TvShow.new
-        @tvshow.title = params[:title].titleize
-        @tvshow.network = params[:network]
-        @tvshow.rate = params[:rate]
-        
+        set_tvshow
         if @tvshow.valid?
             @tvshow.save
             flash[:notice] = "New Show Succsessfully Created "
@@ -35,12 +31,12 @@ class TvShowsController < ApplicationController
     end
 
     def edit
-        @tvshow = TvShow.find_by(id:params[:id])
+        set_tvshow
     end
 
 
     def update
-        @tvshow = TvShow.find_by(id:params[:id])
+        set_tvshow
         if @tvshow
            @tvshow.update(tvshow_params)
             flash[:notice] = "Show Succsessfully Updated"
@@ -53,7 +49,7 @@ class TvShowsController < ApplicationController
     end
 
     def destroy
-        @tvshow = TvShow.find_by(id:params[:id])
+        set_tvshow
         @tvshow.destroy
                  flash[:notice] = "Show Succsessfully deleted "
 
@@ -70,7 +66,9 @@ class TvShowsController < ApplicationController
         @tvshows = TvShow.most_comments
     end
     private 
-
+ def set_tvshow
+        @tvshow = TvShow.find_by(id: params[:id])
+    end
     def tvshow_params 
         params.require(:tv_show).permit(:title, :network, :rate )
     end 

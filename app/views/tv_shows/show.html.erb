@@ -1,18 +1,15 @@
-  <% if !flash[:notice].blank? %>
-     <div class ="notice">
-        <%= flash[:notice] %>
-           </div>
-  <%end %>
+  <%= render 'layouts/alert' %>
 
        <h1><%= @tvshow.title %> </h1>
-      <%= link_to("Edit Show Details", "/tv_shows/#{@tvshow.id}/edit") %> |
-      <%= link_to 'Delete Show', tv_show_path(@tvshow), method: :delete  %>
+  <center>    <%= link_to("Edit Show Details", "/tv_shows/#{@tvshow.id}/edit") %> <c> ᛫	</c>
+      <%= link_to 'Delete Show', tv_show_path(@tvshow), method: :delete  %> </c>
          <h2><%= current_user ? link_to("add comment", "/tv_shows/#{@tvshow.id}/comments/new") : nil %></h2>
            <p>  <%= @tvshow.comments.count %> Comments:</p>
              <% @tvshow.comments.each do |comment| %> 
            
-                <li> <%= link_to comment.user.username , "/comments/#{comment.id}" %> :
+                <li> <%= link_to comment.user.username.titleize , "/comments/#{comment.id}" %> :
                      <%= comment.comment %>
+                   <c>  <%= time_ago_in_words (comment.created_at) %> ago</c>
                         <p style = "text-align:right"> 
 
                           </div>

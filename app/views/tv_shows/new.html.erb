@@ -1,10 +1,2 @@
-<%= form_with url:tv_shows_path ,id: :new_tv_show do |form| %>
-    <div>  <%= form.label :title %>:
-    <%= form.text_field :title %></div>
-      <div><%= form.label :network %>:
-      <%= form.text_field :network %></div>
-         <div><%= form.label :rate %>:
-         <%= form.text_field :rate %></div>
-         <%= form.submit %>
-<% end %>
-
+  <h1> Create New Show </h1>
+  <%= render 'form' %>
