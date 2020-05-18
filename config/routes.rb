@@ -8,7 +8,9 @@ Rails.application.routes.draw do
    
      resources :tv_shows, :comments, only:[:index, :new, :create, :show, :edit, :update, :destroy]
    
-   
+    resources :tv_shows
+    resources :comments
+
      resources :tv_shows, path:"recent_tv_shows_path"  do 
       collection do 
         get :recent

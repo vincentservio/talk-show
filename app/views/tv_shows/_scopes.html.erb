@@ -1,0 +1,11 @@
+<center> 
+<%= render 'sort' %>
+    <ul><% TvShow.recent.each do |t| %>
+        <div> <%= link_to(t.title, "/tv_shows/#{t.id}") %> </div>
+    <%end %> 
+            <div> ________</div>
+            <%= link_to "ADD NEW TVSHOW", new_tv_show_path(@tvshow), class: "button" %>
+                <div> -</div>
+    </ul>
+
+</center>

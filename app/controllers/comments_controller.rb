@@ -19,11 +19,14 @@ class CommentsController < ApplicationController
         if params[:tv_show_id]
            set_tvshow
            @comment = @tvshow.comments.build(comment_params)
+           
+             
         else 
             set_comment
         end  
              proper_user
-             if @comment.valid?
+             
+            if @comment.valid?
                 @comment.save 
                 flash[:notice] = "New comment Succsessfully Created "
                 redirect_to @tvshow

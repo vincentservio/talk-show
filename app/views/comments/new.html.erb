@@ -2,6 +2,7 @@
 
 <h2><%= @tvshow.title %> </h2>
 <%= form_with model:[@tvshow, @comment], local: :true  do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id%>
     <%= f.label :comment %>
     <%= f.text_field :comment %>
     <%= f.submit %>

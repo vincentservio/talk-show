@@ -20,7 +20,10 @@ class TvShowsController < ApplicationController
     end 
 
     def create
-        set_tvshow
+        @tvshow = TvShow.new
+        @tvshow.title = params[:title].titleize
+        @tvshow.network = params[:network]
+        @tvshow.rate = params[:rate]
         if @tvshow.valid?
             @tvshow.save
             flash[:notice] = "New Show Succsessfully Created "
@@ -65,11 +68,14 @@ class TvShowsController < ApplicationController
     def most_comments
         @tvshows = TvShow.most_comments
     end
+
+
     private 
- def set_tvshow
+    def set_tvshow
         @tvshow = TvShow.find_by(id: params[:id])
     end
+
     def tvshow_params 
-        params.require(:tv_show).permit(:title, :network, :rate )
+        params.require(:tv_show).permit(:title, :network, :rate)
     end 
 end
