@@ -7,4 +7,10 @@ class TvShow < ApplicationRecord
   scope :most_comments, -> { joins(:comments).group('tv_shows.id').order('COUNT(comment) DESC').limit(10) }
       validates :title, uniqueness: true
        validates :title, length: { minimum: 2 }
+  scope :contains, -> (search) {where("LOWER(title) LIKE ?", "#{search}%" )}
+
 end
+ 
+
+
+

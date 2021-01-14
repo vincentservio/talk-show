@@ -1,9 +1,10 @@
 class TvShowsController < ApplicationController
 
     def index 
-        @tvshows =  TvShow.all
+     @tvshows = TvShow.contains(params[:search])
+     
     end 
-
+    
     def show
         set_tvshow
         @user = current_user 
@@ -18,7 +19,7 @@ class TvShowsController < ApplicationController
         @tvshow = TvShow.new
         @comment = Comment.new
     end 
-
+ 
     def create
         @tvshow = TvShow.new
         @tvshow.title = params[:title].titleize
@@ -59,7 +60,6 @@ class TvShowsController < ApplicationController
         redirect_to tv_shows_path
     end
 
-   
 
     def recent
         @tvshows = TvShow.recent
@@ -76,6 +76,6 @@ class TvShowsController < ApplicationController
     end
 
     def tvshow_params 
-        params.require(:tv_show).permit(:title, :network, :rate)
+        params.require(:tv_show).permit(:title, :network, :rate, :search)
     end 
 end

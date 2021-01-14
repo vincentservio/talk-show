@@ -19,8 +19,6 @@ class CommentsController < ApplicationController
         if params[:tv_show_id]
            set_tvshow
            @comment = @tvshow.comments.build(comment_params)
-           
-             
         else 
             set_comment
         end  
@@ -32,8 +30,7 @@ class CommentsController < ApplicationController
                 redirect_to @tvshow
             else
                     flash[:notice] = "Comment Cannot Be Created Review Entry "
-
-                render :new 
+                    render :new 
             end 
     end
 

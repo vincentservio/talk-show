@@ -4,4 +4,13 @@
         <%= link_to "Most Popular", most_comments_tv_shows_path, class: "link" %>
 
 
+
+<%= form_tag(tv_shows_path, method: :get) do %>
+    
+
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
 </p>

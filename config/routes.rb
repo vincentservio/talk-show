@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     end
 
   root to: 'tv_shows#index'
+  
+  get '/tv_shows/search', to: 'tv_shows#index'
+
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
