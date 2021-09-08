@@ -58,6 +58,6 @@ gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 
 gem 'omniauth-facebook'
 
-gem 'better_errors', '~> 2.1', '>= 2.1.1'
+gem 'better_errors', '~> 2.8'
 
 gem 'dotenv-rails'
